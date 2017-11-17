@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MvcMovieLogin.Models;
 
-namespace MvcMovieLogin.Controllers
+namespace MvcMovie.Controllers
 {
     public class HomeController : Controller
     {
@@ -17,7 +17,7 @@ namespace MvcMovieLogin.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "CSIS 4135 - Fall 2017";
 
             return View();
         }

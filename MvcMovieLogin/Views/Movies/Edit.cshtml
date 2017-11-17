@@ -1,0 +1,104 @@
+﻿@model Movie
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>Edit Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReleaseDate" class="control-label"></label>
+                <input asp-for="ReleaseDate" class="form-control" />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genre" class="control-label"></label>
+                <input asp-for="Genre" class="form-control" />
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <select asp-for="Rating" class="form-control">
+                    @{
+                        @if (Model.Rating == "G")
+                        {
+                            <option selected value="G">G</option>
+                        }
+                        else
+                        {
+                            <option value="G">G</option>
+                        }
+                        @if (Model.Rating == "PG")
+                        {
+                            <option selected value="PG">PG</option>
+                        }
+                        else
+                        {
+                            <option value="PG">PG</option>
+                        }
+                        @if (Model.Rating == "PG-13")
+                        {
+                            <option selected value="PG-13">PG-13</option>
+                        }
+                        else
+                        {
+                            <option value="PG-13">PG-13</option>
+                        }
+                        @if (Model.Rating == "R")
+                        {
+                            <option selected value="R">R</option>
+                        }
+                        else
+                        {
+                            <option value="R">R</option>
+                        }
+                        @if (Model.Rating == "NC-17")
+                        {
+                            <option selected value="NC-17">NC-17</option>
+                        }
+                        else
+                        {
+                            <option value="NC-17">NC-17</option>
+                        }
+                        @if (Model.Rating == "NR")
+                        {
+                            <option selected value="NR">NR</option>
+                        }
+                        else
+                        {
+                            <option value="NR">NR</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+                <a class="btn btn-default" asp-controller="Movies" asp-action="Index">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
