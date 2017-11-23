@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,16 +7,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovieLogin.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace MvcMovie.Controllers
 {
     public class MoviesController : Controller
     {
         private readonly MvcMovieContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public MoviesController(MvcMovieContext context)
+        public MoviesController(MvcMovieContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Movies
@@ -57,6 +61,21 @@ namespace MvcMovie.Controllers
             movieReviewModelVM.MGenre = movieGenreVM;
             movieReviewModelVM.MReview = movieReviewVM;
 
+
+            var user = _userManager.GetUserAsync(User);
+            //user.Result.UserName
+            //bool val1 = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+            Console.WriteLine("user: " + user.Result);
+            Console.WriteLine("User: " + User);
+            Console.WriteLine("Identity: " + User?.Identity);
+            if (User?.Identity.IsAuthenticated == true) {
+                Console.WriteLine("User: " + User);
+                Console.WriteLine("Identity: " + User?.Identity);
+                ViewData["LoggedIn"] = true;
+            }
+            else {
+                ViewData["LoggedIn"] = false;
+            }
             return View(movieReviewModelVM);
 
             //return View(await movies.ToListAsync());

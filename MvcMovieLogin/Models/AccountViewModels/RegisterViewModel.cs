@@ -8,6 +8,9 @@ namespace MvcMovieLogin.Models.AccountViewModels
 {
     public class RegisterViewModel
     {
+        //[Display(Name = "UserName")]
+        //public String Name { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
