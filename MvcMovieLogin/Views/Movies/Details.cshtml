@@ -1,5 +1,11 @@
 ﻿@model MovieReview
 
+@using Microsoft.AspNetCore.Identity
+@using MvcMovieLogin.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @{
     ViewData["Title"] = "Details";
 }
@@ -41,7 +47,14 @@
     </dl>
 </div>
 <div>
-    <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model.movie.ID">Edit</a>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model.movie.ID">Edit</a>
+    }
+    else
+    {
+        <a disabled class="btn btn-success">Edit</a>
+    }
     <a class="btn btn-default" asp-action="Index">Back to List</a>
 </div>
 
@@ -64,17 +77,32 @@
                         <hr />
                     </td>
                     <td>
-                        <a class="btn btn-xs btn-default" asp-controller="Reviews" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
-                        <a class="btn btn-xs btn-default" asp-controller="Reviews" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <a class="btn btn-xs btn-default" asp-controller="Reviews" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                            <a class="btn btn-xs btn-default" asp-controller="Reviews" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        }
+                        else
+                        {
+                            <a disabled class="btn btn-xs btn-default">Edit</a>
+                            <a disabled class="btn btn-xs btn-default">Delete</a>
+                        }
                     </td>
                     @{
                         item.MovieID = (int)ViewData["mID"];
                     }
                 </tr>
-                            }
-                        }
+            }
+        }
     </tbody>
 </table>
 <div>
-    <a class="btn btn-lg btn-info" asp-controller="Reviews" asp-action="Create" asp-route-id="@ViewData["mID"]">Write a Review</a>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a class="btn btn-lg btn-info" asp-controller="Reviews" asp-action="Create" asp-route-id="@ViewData["mID"]">Write a Review</a>
+    }
+    else
+    {
+        <a disabled class="btn btn-lg btn-info">Write a Review</a>
+    }
 </div>

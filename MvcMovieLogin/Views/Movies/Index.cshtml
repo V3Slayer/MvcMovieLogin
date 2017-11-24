@@ -1,23 +1,28 @@
 ﻿@model MovieReviewModel
 
+@using Microsoft.AspNetCore.Identity
+@using MvcMovieLogin.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @{
     ViewData["Title"] = "Movie List";
 }
 
 <h2>Movie List</h2>
-@{
-    bool LoggedIn = (bool)ViewData["LoggedIn"];
-    <p>
-        @if (LoggedIn == true)
-        {
-            <a class="btn btn-info" asp-action="Create">Create New Movie</a>
-        }
-        else
-        {
-            <a disabled class="btn btn-info">Create New Movie</a>
-        }
-    </p>
-}
+
+<p>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a class="btn btn-info" asp-action="Create">Create New Movie</a>
+    }
+    else
+    {
+        <a disabled class="btn btn-info">Create New Movie</a>
+    }
+</p>
+
 
 <form asp-controller="Movies" asp-action="Index" method="get">
     <p>
@@ -70,31 +75,23 @@
                 </td>
                 <td>
                     @{
-                        @if (LoggedIn == true)
-                        {
-                            <a class="btn btn-xs btn-default" asp-action="Details" asp-route-id="@item.ID">Details</a>
-                        }
-                        else
-                        {
-                            <a disabled class="btn btn-xs btn-default">Details</a>
-                        }
-                        //var hasReview = "btn btn-xs btn-default";
-                        var hasReview2 = false;
+                        <a class="btn btn-xs btn-default" asp-action="Details" asp-route-id="@item.ID">Details</a>
+
+                        var hasReview = false;
                         @foreach (var item2 in Model.MReview.review)
                         {
                             Console.WriteLine("item1 ID" + item.ID + "item2 ID" + item2.MovieID);
 
                             @if (item.ID.Equals(item2.MovieID))
                             {
-                                //hasReview += " deactivated";
-                                hasReview2 = true;
+                                hasReview = true;
                             }
                         }
-                        @if (LoggedIn == true)
+                        @if (SignInManager.IsSignedIn(User))
                         {
-                            @if (hasReview2 == true)
+                            @if (hasReview == true)
                             {
-                                <a disabled class="btn btn-xs btn-default disabled">Delete</a>
+                                <a disabled class="btn btn-xs btn-default">Delete</a>
                             }
                             else
                             {

@@ -27,6 +27,8 @@ namespace MvcMovieLogin.Models
 
         public DbSet<MvcMovieLogin.Models.Review> Review { get; set; }
 
+        public DbSet<MvcMovieLogin.Models.ApplicationUser> ApplicationUser { get; set; }
+
         //public DbSet<MvcMovieLogin.Models.ApplicationUser> ApplicationUser { get; set; }
     }
 }

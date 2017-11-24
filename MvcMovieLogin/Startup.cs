@@ -35,7 +35,6 @@ namespace MvcMovieLogin
                 options.Password.RequiredUniqueChars = 3;
 
                 // User settings
-                //Kerfuffle
                 options.User.RequireUniqueEmail = true;
                 //options.User.AllowedUserNameCharacters = "@.";
             });
@@ -63,6 +62,7 @@ namespace MvcMovieLogin
             //if (env.IsDevelopment())
             //{
             app.UseDeveloperExceptionPage();
+            app.UseAuthentication();
             //    app.UseBrowserLink();
             //}
             //else

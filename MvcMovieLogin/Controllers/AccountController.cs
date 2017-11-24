@@ -90,7 +90,7 @@ namespace MvcMovie.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult ChangeScreenName(string returnUrl = null)
+        public IActionResult ScreenName(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             return View();
@@ -99,24 +99,29 @@ namespace MvcMovie.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ChangeScreenName(LoginViewModel model, string returnUrl = null)
+        public async Task<IActionResult> ScreenName(ApplicationUser model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: false, lockoutOnFailure: false);
-                if (result.Succeeded)
+                var user = await _userManager.GetUserAsync(User);
+                if (user != null)
                 {
-                    if (!string.IsNullOrEmpty(returnUrl))
+                    user.ScreenName = model.ScreenName;
+                    var result = await _userManager.UpdateAsync(user);
+                    if (result != null)
                     {
-                        return Redirect(returnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
+                        if (!string.IsNullOrEmpty(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction(nameof(HomeController.Index), "Home");
+                        }
                     }
                 }
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                ModelState.AddModelError(string.Empty, "User not found or update failed");
                 return View(model);
             }
             // If we got this far, something failed, redisplay form
