@@ -8,4 +8,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAVm5ceCDbW0WI773O7RcdowAAAAACAAAAAAAQZgAAAAEAACAAAABTBxiUqJnsYtWKKzf0P7c4RIwCbT89HcquBe8bbtZXywAAAAAOgAAAAAIAACAAAACzHQC3TV9BevqVwZIUbb6zGDmUeMfMGh2JUB0veSwr54AAAABEt0AtttzGaZdNBJKrXFVfEkcKjqG8DHBae7GSvcpHbIZ4R7CYQpYZBwTm/kricbi+eBwTPXfP0pdTvRSJQDRQFlUdIjBpmiYbawi1cJ2yxkbR60yML2czcaOL+oUz8WRVKx9+Zwuc7NHE2rWVq2kVuXx1HGEZdud3URuEmWutlEAAAAA61iZ3jPzdS5v4EwvNyFUt/Szd/8s5JRDfZtzCMeOva8DHKCfzEznurDNZghvS4VyHBvKzQ7f5MHauMJUFLr7K</EncryptedPassword>
   </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="MvcMovieContext">
+      <Value>Data Source=tcp:carrol50movie.database.windows.net,1433;Initial Catalog=StocktonWebApp-MvcMovieDatabase;User ID=carrol50;Password=Chmssmtib03</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="MvcMovieLogin.Models.MvcMovieContext">
+      <Value>Data Source=tcp:carrol50movie.database.windows.net,1433;Initial Catalog=StocktonWebApp-MvcMovieDatabase;User ID=carrol50;Password=Chmssmtib03</Value>
+    </EFMigrations>
+  </ItemGroup>
 </Project>

@@ -1,0 +1,24 @@
+<h1>Movie List</h1>
+
+<p *ngIf="!movies"><em>Loading...</em></p>
+
+<table class='table' *ngIf="movies">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Release Date</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="rowlink" *ngFor="let movie of movies" (click)="getMovie(movie.movieID)">
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.releaseDate }}</td>
+            <td>{{ movie.genre }}</td>
+            <td>{{ movie.price }}</td>
+            <td>{{ movie.rating }}</td>
+        </tr>
+    </tbody>
+</table>
