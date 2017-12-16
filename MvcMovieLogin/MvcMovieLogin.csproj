@@ -22,10 +22,17 @@
 
   <ItemGroup>
     <None Remove="ClientApp\app\components\movies\movies.component.spec.ts" />
+    <None Remove="Properties\PublishProfiles\StocktonWebApp-MvcMovieLogin - Web Deploy.pubxml" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\movies\add-movie.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\movies\movie.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\movies\movies.component.spec.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

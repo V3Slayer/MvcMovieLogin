@@ -3,9 +3,9 @@ C:\Users\Shaun\Documents\GitHub\MvcMovieLogin\MvcMovieLogin\bin\Debug\netcoreapp
 C:\Users\Shaun\Documents\GitHub\MvcMovieLogin\MvcMovieLogin\bin\Debug\netcoreapp2.0\MvcMovieLogin.runtimeconfig.dev.json
 C:\Users\Shaun\Documents\GitHub\MvcMovieLogin\MvcMovieLogin\bin\Debug\netcoreapp2.0\MvcMovieLogin.dll
 C:\Users\Shaun\Documents\GitHub\MvcMovieLogin\MvcMovieLogin\bin\Debug\netcoreapp2.0\MvcMovieLogin.pdb
+C:\Users\Shaun\Documents\GitHub\MvcMovieLogin\MvcMovieLogin\obj\Debug\netcoreapp2.0\MvcMovieLogin.csprojResolveAssemblyReference.cache
 C:\Users\Shaun\Documents\GitHub\MvcMovieLogin\MvcMovieLogin\obj\Debug\netcoreapp2.0\MvcMovieLogin.csproj.CoreCompileInputs.cache
 C:\Users\Shaun\Documents\GitHub\MvcMovieLogin\MvcMovieLogin\obj\Debug\netcoreapp2.0\MvcMovieLogin.AssemblyInfoInputs.cache
 C:\Users\Shaun\Documents\GitHub\MvcMovieLogin\MvcMovieLogin\obj\Debug\netcoreapp2.0\MvcMovieLogin.AssemblyInfo.cs
 C:\Users\Shaun\Documents\GitHub\MvcMovieLogin\MvcMovieLogin\obj\Debug\netcoreapp2.0\MvcMovieLogin.dll
 C:\Users\Shaun\Documents\GitHub\MvcMovieLogin\MvcMovieLogin\obj\Debug\netcoreapp2.0\MvcMovieLogin.pdb
-C:\Users\Shaun\Documents\GitHub\MvcMovieLogin\MvcMovieLogin\obj\Debug\netcoreapp2.0\MvcMovieLogin.csprojResolveAssemblyReference.cache

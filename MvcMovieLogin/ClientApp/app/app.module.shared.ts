@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { MovieComponent } from './components/movies/movie.component';
+import { AddMovieComponent } from './components/movies/add-movie.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +20,9 @@ import { CounterComponent } from './components/counter/counter.component';
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        MoviesComponent
+        MoviesComponent,
+        MovieComponent,
+        AddMovieComponent
     ],
     imports: [
         CommonModule,
@@ -28,6 +32,8 @@ import { CounterComponent } from './components/counter/counter.component';
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'movies', component: MoviesComponent },
+            { path: 'movie/:id', component: MovieComponent },
+            { path: 'addmovie', component: AddMovieComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

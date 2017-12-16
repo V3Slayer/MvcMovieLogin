@@ -1,0 +1,14 @@
+﻿<h2>Add a Movie</h2>
+
+<form class="form" #bookForm="ngForm" (ngSubmit)="onSubmit()">
+    <div>Title: <input type="text" name="title" [(ngModel)]="model.title" /></div>
+    <div>
+        Movie:
+        <select [(ngModel)]="model.movieID" name="movieID">
+            <option *ngFor="let a of model.movieList" [ngValue]="a.movieID">{{a.title}}</option>
+        </select>
+    </div>
+    <div>Release Date: <input type="number" name="releaseDate" [(ngModel)]="model.releaseDate" /></div>
+    <div>Genre: <input type="text" name="genre" [(ngModel)]="model.genre" /></div>
+    <button type="submit" class="btn btn-info">Submit</button>
+</form>
